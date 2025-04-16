@@ -18,8 +18,14 @@ public partial class ShoplistDbContext : DbContext
     public virtual DbSet<Shoplist> Shoplist { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-// To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Data Source=DESKTOP-SNM6D0C\\SQLEXPRESS; Database=ShoplistDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True");
+        // To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
+
+        //Azure yhteys
+        => optionsBuilder.UseSqlServer("Server=tcp:tilausdbjmo.database.windows.net,1433;Initial Catalog=ShoplistDB;Persist Security Info=False;User ID=adminjmo;Password=Bangkok2024!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+    
+    
+        //Paikallinen yhteys
+        // => optionsBuilder.UseSqlServer("Data Source=DESKTOP-SNM6D0C\\SQLEXPRESS; Database=ShoplistDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

@@ -45,5 +45,18 @@ namespace ShoppingBackend.Controllers
                 return NotFound("Product with id" + id + " not found.");
             }
         }
+
+        // Tavaroiden merkitseminen ostetuksi
+        [HttpPut("{id}")]
+        public ActionResult MarkAsPurchased(int id)
+        {
+            var item = db.Shoplist.Find(id);
+            if (item == null) return NotFound();
+
+            item.Purchased = !item.Purchased; // toggle
+            db.SaveChanges();
+
+            return Ok(item);
+        }
     }
 }

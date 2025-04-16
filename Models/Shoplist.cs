@@ -10,4 +10,6 @@ public partial class Shoplist
     public string Item { get; set; } = null!;
 
     public int Amount { get; set; }
+
+    public bool Purchased { get; set; }  
 }
